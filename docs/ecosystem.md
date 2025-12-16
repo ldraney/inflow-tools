@@ -45,16 +45,34 @@ Demographics → Marketing → Tunnel → Dashboard → Consulting
 (find)         (reach)     (capture) (prove)    (close)
 ```
 
-### Phase 3: Self-Service Proof
+### Phase 3: Credibility-First Conversion
+Before asking for credentials, prove trustworthiness via `inflow-tunnel`:
+- Personal bio and LinkedIn
+- Portfolio of other projects
+- Links to public GitHub repos (core stack)
+- Links to npm packages users can verify
+- Guide to get credentials from their Inflow account
+
+The open source core stack IS the credibility. They can audit the code that will touch their data.
+
+### Phase 4: Self-Service Proof
 - User enters companyID + token via `inflow-tunnel`
 - We sync their data, run materialized views
 - Dashboard shows: "Here's your data, cleaned, with stats on what was wrong"
 - Zero trust required—they see their own mess fixed
 
-### Phase 4: Consulting Upsell
-- "Want this permanent? Let's talk."
-- `inflow-put` is the paid deliverable
-- Stats from materialized views justify the invoice
+### Phase 5: The Sale
+**What they see:** Golden nugget - messy data transformed into clean, conventional views.
+
+**The offer:** "Want me to help you make this permanent?"
+
+**What they pay for:**
+- Data cleanup & PUT - conventions applied to their Inflow instance
+- Consulting - ongoing help with data strategy
+- Custom tools - tailored automation for their workflow
+- Team training - teach their team to maintain clean data
+
+**Why they pay:** They see it working. Clean data is right there. Now they want it for real.
 
 ## Trust Ladder
 

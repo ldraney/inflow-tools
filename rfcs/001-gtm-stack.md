@@ -18,9 +18,24 @@ The current inflow-tools ecosystem has strong technical foundations (client, typ
 
 **The business model:**
 - Free: User enters credentials → we show them their data cleaned + stats on what was wrong
-- Paid: Consulting to actually fix their Inflow instance via `inflow-put`
+- Paid: Consulting to personally review their data, establish conventions, and PUT it back
+
+**The sale:**
+Dashboard shows the golden nugget - their messy data transformed into clean, conventional views. Stats show exactly what was fixed. The offer: "Want me to help you make this permanent?"
+
+**What they pay for:**
+- Data cleanup & PUT - conventions applied to their Inflow instance
+- Consulting - ongoing help with data strategy
+- Custom tools - tailored automation for their workflow
+- Team training - teach their team to maintain clean data
+
+They see clean data, clear conventions their team can use. "My god please take my money."
 
 The dashboard proves value. The GTM stack gets people to the dashboard.
+
+**Licensing:**
+- Core stack: MIT (open source for credibility)
+- GTM stack: Private (competitive advantage)
 
 ## Detailed Design
 
@@ -89,23 +104,32 @@ The dashboard proves value. The GTM stack gets people to the dashboard.
 
 ### inflow-tunnel
 
-**Purpose:** Landing pages and conversion flow.
+**Purpose:** Landing pages with credibility-first conversion flow.
 
 **Contents:**
 - NextJS app with:
-  - Landing page (value prop, social proof)
+  - Landing page (value prop: "Is your Inflow data a mess?")
+  - **Credibility section** (BEFORE asking for credentials):
+    - Personal bio/intro
+    - LinkedIn profile link
+    - Portfolio/other projects
+    - Links to public GitHub repos (core stack)
+    - Links to npm packages
+  - Guide to get credentials from Inflow account
   - Credential input form (companyID + token)
-  - Audit progress page
-  - Redirect to dashboard
-  - Upsell CTA
+  - Handoff to dashboard
+
+**Why credibility first:**
+You're asking for API credentials. That requires trust. Before the ask:
+1. "Here's who I am" - real person, not anonymous service
+2. "Here's my work" - verifiable projects
+3. "Here's the code" - open source core stack they can audit
+
+The public core stack IS the credibility. It proves expertise and transparency.
 
 **Flow:**
 ```
-Landing → Enter Credentials → Audit Running → Dashboard (with stats)
-                                                    ↓
-                                           "Want this permanent?"
-                                                    ↓
-                                              Consulting CTA
+Landing → Credibility/Bio → "How to get credentials" guide → Enter Credentials → Dashboard
 ```
 
 ## Alternatives Considered

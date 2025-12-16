@@ -39,13 +39,15 @@ Your Inflow Account
 | inflow-dashboard | 🚧 Planned | NextJS analytics frontend |
 | inflow-put | 🚧 Planned | Write adapter (view → API mutations) |
 
-### GTM Stack
+### GTM Stack (Private)
 
 | Package | Status | Description |
 |---------|--------|-------------|
-| inflow-demographics | 🚧 Planned | ICP research, audience identification, SEO keywords |
-| inflow-marketing | 🚧 Planned | Outreach campaigns, email templates, ad copy |
-| inflow-tunnel | 🚧 Planned | Landing pages, conversion flow, lead capture |
+| inflow-demographics | 🔒 Private | ICP research, audience identification, SEO keywords |
+| inflow-marketing | 🔒 Private | Outreach campaigns, email templates, ad copy |
+| inflow-tunnel | 🔒 Private | Landing pages, credibility/bio, lead capture |
+
+> GTM repos are private. Core stack is open source for credibility - tunnel links back to public repos/npm packages as proof of expertise.
 
 ## Quick Start
 

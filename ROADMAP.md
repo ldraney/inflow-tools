@@ -66,23 +66,49 @@ HOW to reach them. Outreach execution and campaign management.
 - A/B testing framework
 
 ### inflow-tunnel
-WHERE they convert. Landing pages and lead capture flow.
+WHERE they convert. Landing pages with credibility-first design.
 
 **Scope:**
 - Landing page ("Is your Inflow data a mess?")
-- Value prop visualization (before/after)
+- **Credibility section:**
+  - Personal bio/intro
+  - LinkedIn profile link
+  - Other projects/portfolio
+  - Links to public GitHub repos (core stack)
+  - Links to npm packages (inflow-client, inflow-api-types, inflow-get, inflow-materialize)
+- Guide to get credentials from their Inflow account
 - Credential input (companyID + token)
-- Free audit flow → dashboard handoff
-- CTA to consulting upsell
+- Handoff to dashboard
+
+**Why credibility first:**
+Before asking for credentials, prove you're trustworthy:
+- "Here's who I am"
+- "Here's my work you can verify"
+- "Here's the open source code that powers this"
 
 **The funnel:**
 ```
 Demographics (find them)
     → Marketing (reach them)
-        → Tunnel (capture them)
-            → Dashboard (prove value)
-                → Consulting (close them)
+        → Tunnel (build trust, capture credentials)
+            → Dashboard (prove value with their data)
+                → Consulting (close: "want me to clean this up?")
+                    → PUT (paid deliverable: conventions applied to their Inflow)
 ```
+
+### The Sale
+
+**What they see:** Dashboard shows their messy data transformed into clean, conventional views with stats on what was fixed.
+
+**The offer:** "Want me to help you make this permanent?"
+
+**What they pay for:**
+- **Data cleanup & PUT** - conventions applied directly to their Inflow instance
+- **Consulting** - ongoing help with data strategy and best practices
+- **Custom tools** - tailored automation for their specific workflow
+- **Team training** - teach their team to maintain clean data going forward
+
+**Why they pay:** They see the golden nugget. Clean data, clear conventions, team can finally use it properly. "My god please take my money."
 
 ## Future Ideas
 
