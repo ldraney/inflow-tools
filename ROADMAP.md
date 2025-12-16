@@ -13,20 +13,82 @@
 
 ## Next Up
 
-### inflow-dashboard
-NextJS frontend that displays materialized views.
+### inflow-materialize (Enhancement)
+The existing library needs data quality views that expose problems and quantify the mess.
 
-**MVP scope:**
-- Product inventory status table
-- Reorder alerts list
-- Open orders pipeline view
-- Basic filtering/sorting
+**Data Quality Views (the "before"):**
+- `v_duplicate_products` - products with same/similar names, confidence score
+- `v_orphaned_records` - records with broken foreign keys
+- `v_missing_fields` - products missing critical fields (reorder point, category, vendor)
+- `v_naming_inconsistencies` - products that don't follow detected patterns
+- `v_sku_format_violations` - SKUs that break the dominant pattern
+
+**Summary Views (the stats):**
+- `v_data_quality_summary` - counts of each issue type
+- `v_completeness_score` - percentage of fields filled per entity
+- `v_convention_compliance` - how well data follows detected patterns
+
+**Clean Business Views (the "after"):**
+- `v_products_enriched` - products with all relationships joined, nulls handled
+- `v_inventory_status` - current stock with reorder alerts, days until stockout
+- `v_order_pipeline` - orders with status, customer, line items denormalized
+
+**Convention Detection:**
+- Auto-detect naming patterns (categories, vendors, SKU formats)
+- Flag outliers that break the pattern
+- Suggest normalizations
+
+**Tunnel content this creates:**
+- Screenshots of duplicate detection
+- Stats like "Found 847 issues in 3 seconds"
+- Before/after comparisons
+
+---
+
+### inflow-dashboard
+NextJS frontend that displays materialized views with focus on proving value.
+
+**Stats Cards (the "holy shit" moment):**
+- "Found X potential duplicates"
+- "Y products missing reorder points"
+- "Data completeness: Z%"
+- "Convention compliance: W%"
+
+**Data Quality Tables (drill into issues):**
+- Duplicates table with confidence score, suggested merge
+- Missing fields table grouped by field type
+- Naming inconsistencies with suggested fixes
+- Exportable to CSV
+
+**Clean Data Tables (the "after"):**
+- Products with all enrichments
+- Inventory status with visual reorder alerts
+- Order pipeline with status badges
+
+**Before/After Toggle:**
+- Switch between raw Inflow view and cleaned view
+- Side-by-side comparison mode
+- Highlight what changed
+
+**Export & Reports:**
+- CSV export of any view
+- PDF data quality report (shareable proof)
+- "Share with your team" link
 
 **Tech:**
 - NextJS App Router
 - SQLite via better-sqlite3
 - Tailwind CSS
 - shadcn/ui components
+- Recharts for visualizations
+
+**Tunnel content this creates:**
+- Screenshots of the dashboard
+- GIFs of before/after toggle
+- Sample PDF reports
+- "Here's what we found in 30 seconds"
+
+---
 
 ### inflow-put
 Write adapter that maps view-shaped updates to Inflow API calls.
@@ -35,11 +97,13 @@ Write adapter that maps view-shaped updates to Inflow API calls.
 - Update product reorder point
 - Update product reorder quantity
 - Bulk updates via CSV
+- Apply convention fixes (rename to match pattern)
 
 **Design questions:**
 - Optimistic updates vs. wait for re-sync?
 - Validation: client-side, server-side, or both?
 - Error handling: rollback strategy?
+- Dry-run mode to preview changes?
 
 ## GTM Stack
 
@@ -112,11 +176,11 @@ Demographics (find them)
 
 ## Future Ideas
 
-### Data Quality Tools
-- Duplicate detection
-- Missing data alerts
-- Naming convention enforcement
-- Historical trend analysis
+### Advanced Data Quality
+- Historical trend analysis (data quality over time)
+- Automated fix suggestions with confidence scores
+- Machine learning for pattern detection
+- Cross-entity consistency checks
 
 ### Integrations
 - QuickBooks sync status
