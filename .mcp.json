@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "inflow-repos": {
+      "command": "gh",
+      "args": [
+        "repo",
+        "list",
+        "ldraney",
+        "--json",
+        "name,description,isPrivate,url,pushedAt",
+        "-L",
+        "50"
+      ],
+      "description": "Lists all ldraney repos for inflow-tools oversight. Use to track, archive, or update inflow-* projects. Shows repo name, description, visibility, URL, and last push date."
+    }
+  }
+}

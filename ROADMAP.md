@@ -10,6 +10,7 @@
 
 ### In Progress
 - [ ] Project documentation (this repo)
+- [ ] `inflow-mock` - Pattern library for messy data (see below)
 
 ## Next Up
 
@@ -45,8 +46,8 @@ The existing library needs data quality views that expose problems and quantify 
 
 ---
 
-### inflow-dashboard
-NextJS frontend that displays materialized views with focus on proving value.
+### inflow-app
+Next.js frontend that displays materialized views with focus on proving value.
 
 **Stats Cards (the "holy shit" moment):**
 - "Found X potential duplicates"
@@ -173,6 +174,52 @@ Demographics (find them)
 - **Team training** - teach their team to maintain clean data going forward
 
 **Why they pay:** They see the golden nugget. Clean data, clear conventions, team can finally use it properly. "My god please take my money."
+
+## Mock & Demo Stack
+
+### inflow-mock
+Pattern library for generating intentionally messy data and fixing it. **The core insight: create/detect/fix are symmetric.** If you can create a type of mess, you can detect and fix it.
+
+**Purpose:**
+- Generate realistic messy data to prove our tools work
+- Codify every data quality problem we can solve
+- Provide detection + fix code that real products consume
+
+**Patterns include:**
+- `duplicates` - same product entered multiple ways
+- `missing-reorder` - products without safety stock settings
+- `sku-chaos` - inconsistent or missing SKU formats
+- `vendor-sprawl` - same vendor named differently
+- `category-mess` - flat/overlapping/inconsistent categories
+- `orphaned-records` - broken foreign key references
+- `naming-anarchy` - no naming conventions
+
+**Each pattern has:**
+- `create` - inject this problem into clean data
+- `detect` - SQL/code to surface the problem
+- `fix` - resolve the problem
+
+**Workflow for new patterns:**
+1. See weird mess in real client data
+2. Write `create` that replicates it
+3. Write `detect` that surfaces it
+4. Write `fix` that resolves it
+5. Pattern is now part of the library
+
+### inflow-demo
+Consumes inflow-mock to demonstrate cleanup flow. Shows the progressive cleanup story:
+
+```
+Step 0: Import messy.db → Score: 34%
+Step 1: Resolve duplicates → Score: 52%
+Step 2: Fix missing fields → Score: 71%
+Step 3: Normalize vendors → Score: 85%
+Step 4: SKU standardization → Score: 94%
+```
+
+**Transparency:** Users see exactly what "clean" means and how we get there.
+
+---
 
 ## Future Ideas
 
