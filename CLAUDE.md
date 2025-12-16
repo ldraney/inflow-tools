@@ -11,6 +11,8 @@ Meta repository for the inflow-tools ecosystem. This repo contains documentation
 
 ## Related Repositories
 
+### Core Stack (MIT - Public)
+
 | Repo | Purpose |
 |------|---------|
 | `inflow-client` | API client with auth & rate limiting |
@@ -20,13 +22,30 @@ Meta repository for the inflow-tools ecosystem. This repo contains documentation
 | `inflow-dashboard` | NextJS frontend (planned) |
 | `inflow-put` | Write adapter (planned) |
 
+### GTM Stack (Private)
+
+| Repo | Purpose |
+|------|---------|
+| `inflow-demographics` | ICP research, audience identification |
+| `inflow-marketing` | Outreach campaigns, email templates |
+| `inflow-tunnel` | Landing pages, credibility/bio, lead capture |
+
 ## Key Concepts
 
 ### Materialization-Centric Architecture
 Views are the contract layer. Frontends and PUT services are dumb adapters that read/write view-shaped data. Business logic lives in view definitions.
 
-### Trust Ladder
-Users run tools locally first (zero trust required), then optionally adopt hosted services after establishing trust.
+### Credibility-First Conversion
+Open source core stack proves expertise. Tunnel shows bio, LinkedIn, public repos BEFORE asking for credentials.
+
+### The Funnel
+Demographics (find) → Marketing (reach) → Tunnel (trust) → Dashboard (prove) → Services (close)
+
+### Services Offered
+- Data cleanup & PUT
+- Consulting
+- Custom tools
+- Team training
 
 ## Working in This Repo
 

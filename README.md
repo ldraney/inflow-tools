@@ -89,4 +89,5 @@ This project uses [RFCs](rfcs/) for significant changes. Open an issue to discus
 
 ## License
 
-MIT
+Core stack: MIT (open source for credibility)
+GTM stack: Private (not published)

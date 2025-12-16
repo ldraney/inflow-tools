@@ -1,5 +1,7 @@
 # Architecture
 
+> This doc covers the technical architecture. For business model and GTM strategy, see [ecosystem.md](ecosystem.md).
+
 ## Core Insight
 
 **Materialized views are the contract layer** between data sources and consumers.
