@@ -30,21 +30,31 @@ We're not replacing Inflow—we're extending it for power users who need:
 - Documentation-first approach
 - GitHub presence establishes trust
 
-### Phase 2: Self-Service Tool
-- User provides token + companyID
-- Runs locally (user controls their data)
-- Instant dashboard with insights
-- Zero trust required—it's their machine
+### Phase 2: Active Outreach (GTM Stack)
+Three repos execute the go-to-market:
 
-### Phase 3: Hosted Service (Optional)
-- For users who don't want to run locally
-- OAuth integration (if Inflow supports)
-- Subscription model for ongoing sync + dashboard
+| Repo | Role |
+|------|------|
+| `inflow-demographics` | WHO - ICP research, audience lists, SEO keywords |
+| `inflow-marketing` | HOW - Email sequences, ad copy, outreach automation |
+| `inflow-tunnel` | WHERE - Landing pages, credential capture, conversion |
 
-### Phase 4: Lead Capture → Services
-- Chatbot on dashboard: "Need custom integrations?"
-- Qualified leads already trust the tool
-- Upsell: custom development, consulting, managed service
+**The flow:**
+```
+Demographics → Marketing → Tunnel → Dashboard → Consulting
+(find)         (reach)     (capture) (prove)    (close)
+```
+
+### Phase 3: Self-Service Proof
+- User enters companyID + token via `inflow-tunnel`
+- We sync their data, run materialized views
+- Dashboard shows: "Here's your data, cleaned, with stats on what was wrong"
+- Zero trust required—they see their own mess fixed
+
+### Phase 4: Consulting Upsell
+- "Want this permanent? Let's talk."
+- `inflow-put` is the paid deliverable
+- Stats from materialized views justify the invoice
 
 ## Trust Ladder
 
@@ -60,11 +70,15 @@ Expansion    → Wants custom work → revenue
 
 ## Where to Find Inflow Users
 
+Research lives in `inflow-demographics`. Starting points:
+
 - **Inflow's own channels**: Forums, support community, social media
 - **QuickBooks ecosystem**: Inflow integrates with QB, users overlap
 - **Reddit**: r/inventory, r/smallbusiness, r/ecommerce
 - **LinkedIn**: Inventory management, supply chain groups
 - **YouTube**: Tutorial content for Inflow users
+
+See `inflow-demographics` for ICP definition, keyword research, and audience lists.
 
 ## Competitive Landscape
 

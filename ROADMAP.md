@@ -41,6 +41,49 @@ Write adapter that maps view-shaped updates to Inflow API calls.
 - Validation: client-side, server-side, or both?
 - Error handling: rollback strategy?
 
+## GTM Stack
+
+Active go-to-market execution. These repos turn passive awareness into qualified leads.
+
+### inflow-demographics
+WHO to target. Research and tooling to identify Inflow users who need data cleanup.
+
+**Scope:**
+- ICP (Ideal Customer Profile) definition
+- SEO keyword research for Inflow pain points
+- Audience list building (LinkedIn, forums, communities)
+- Competitor analysis
+- Ad targeting criteria
+
+### inflow-marketing
+HOW to reach them. Outreach execution and campaign management.
+
+**Scope:**
+- Email templates and sequences
+- Ad copy (LinkedIn, Google, Reddit)
+- Content calendar
+- Outreach automation
+- A/B testing framework
+
+### inflow-tunnel
+WHERE they convert. Landing pages and lead capture flow.
+
+**Scope:**
+- Landing page ("Is your Inflow data a mess?")
+- Value prop visualization (before/after)
+- Credential input (companyID + token)
+- Free audit flow → dashboard handoff
+- CTA to consulting upsell
+
+**The funnel:**
+```
+Demographics (find them)
+    → Marketing (reach them)
+        → Tunnel (capture them)
+            → Dashboard (prove value)
+                → Consulting (close them)
+```
+
 ## Future Ideas
 
 ### Data Quality Tools

@@ -28,6 +28,8 @@ Your Inflow Account
 
 ## Packages
 
+### Core Stack
+
 | Package | Status | Description |
 |---------|--------|-------------|
 | [inflow-client](https://github.com/ldraney/inflow-client) | ✅ Published | API client with auth & rate limiting |
@@ -36,6 +38,14 @@ Your Inflow Account
 | [inflow-materialize](https://github.com/ldraney/inflow-materialize) | ✅ Published | Materialized views library |
 | inflow-dashboard | 🚧 Planned | NextJS analytics frontend |
 | inflow-put | 🚧 Planned | Write adapter (view → API mutations) |
+
+### GTM Stack
+
+| Package | Status | Description |
+|---------|--------|-------------|
+| inflow-demographics | 🚧 Planned | ICP research, audience identification, SEO keywords |
+| inflow-marketing | 🚧 Planned | Outreach campaigns, email templates, ad copy |
+| inflow-tunnel | 🚧 Planned | Landing pages, conversion flow, lead capture |
 
 ## Quick Start
 
