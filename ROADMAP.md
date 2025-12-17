@@ -7,10 +7,12 @@
 - [x] `inflow-api-types` - Zod schemas for API validation
 - [x] `inflow-get` - Sync Inflow → SQLite
 - [x] `inflow-materialize` - Materialized views library
+- [x] `inflow-mock` - Generates clean baseline mock data (all 37 tables)
 
 ### In Progress
 - [ ] Project documentation (this repo)
-- [ ] `inflow-mock` - Pattern library for messy data (see below)
+- [ ] `inflow-clean` - Data quality patterns: create, detect, fix (see below)
+- [ ] `inflow-app` - Next.js frontend
 
 ## Next Up
 
@@ -46,48 +48,25 @@ The existing library needs data quality views that expose problems and quantify 
 
 ---
 
-### inflow-app
-Next.js frontend that displays materialized views with focus on proving value.
+### inflow-app (In Progress)
+Next.js frontend for real Inflow data. Displays materialized views with focus on proving value.
 
-**Stats Cards (the "holy shit" moment):**
-- "Found X potential duplicates"
-- "Y products missing reorder points"
-- "Data completeness: Z%"
-- "Convention compliance: W%"
-
-**Data Quality Tables (drill into issues):**
-- Duplicates table with confidence score, suggested merge
-- Missing fields table grouped by field type
-- Naming inconsistencies with suggested fixes
-- Exportable to CSV
-
-**Clean Data Tables (the "after"):**
-- Products with all enrichments
-- Inventory status with visual reorder alerts
-- Order pipeline with status badges
-
-**Before/After Toggle:**
-- Switch between raw Inflow view and cleaned view
-- Side-by-side comparison mode
-- Highlight what changed
-
-**Export & Reports:**
-- CSV export of any view
-- PDF data quality report (shareable proof)
-- "Share with your team" link
+**Core Features:**
+- Display data from inflow-materialize views
+- Run inflow-clean patterns on user's data
+- Show detected issues with severity/confidence
+- Export reports
 
 **Tech:**
 - NextJS App Router
 - SQLite via better-sqlite3
 - Tailwind CSS
 - shadcn/ui components
-- Recharts for visualizations
 
-**Tunnel content this creates:**
-- Screenshots of the dashboard
-- GIFs of before/after toggle
-- Sample PDF reports
-- "Here's what we found in 30 seconds"
+**Integration with inflow-clean:**
+- Import patterns from inflow-clean
+- Run detect() on user's synced data
+- Display issues in UI with actionable fixes
 
 ---
 
@@ -175,15 +154,19 @@ Demographics (find them)
 
 **Why they pay:** They see the golden nugget. Clean data, clear conventions, team can finally use it properly. "My god please take my money."
 
-## Mock & Demo Stack
+## Mock, Clean & Demo Stack
 
-### inflow-mock
-Pattern library for generating intentionally messy data and fixing it. **The core insight: create/detect/fix are symmetric.** If you can create a type of mess, you can detect and fix it.
+### inflow-mock (Done)
+Generates comprehensive clean baseline mock data for all 37 tables in the inflow-get schema. Used as a library by other projects.
 
-**Purpose:**
-- Generate realistic messy data to prove our tools work
-- Codify every data quality problem we can solve
-- Provide detection + fix code that real products consume
+```typescript
+import { generate, createDb } from 'inflow-mock'
+const db = createDb('./test.db')
+const data = generate({ products: 100, customers: 20, vendors: 15 })
+```
+
+### inflow-clean (In Progress)
+Data quality patterns: create mess, detect it, fix it. **The core insight: create/detect/fix are symmetric.** If you can create a type of mess, you can detect and fix it.
 
 **Patterns include:**
 - `duplicates` - same product entered multiple ways
@@ -195,9 +178,11 @@ Pattern library for generating intentionally messy data and fixing it. **The cor
 - `naming-anarchy` - no naming conventions
 
 **Each pattern has:**
-- `create` - inject this problem into clean data
-- `detect` - SQL/code to surface the problem
-- `fix` - resolve the problem
+- `create(db)` - inject this problem into clean data
+- `detect(db)` - surface the problem, return issues
+- `fix(db, issues)` - resolve the problem
+
+**The proof:** Running `detect()` after `fix()` returns zero issues.
 
 **Workflow for new patterns:**
 1. See weird mess in real client data
@@ -206,8 +191,8 @@ Pattern library for generating intentionally messy data and fixing it. **The cor
 4. Write `fix` that resolves it
 5. Pattern is now part of the library
 
-### inflow-demo
-Consumes inflow-mock to demonstrate cleanup flow. Shows the progressive cleanup story:
+### inflow-demo (Planned)
+Shows inflow-clean in action. Part of the sales funnel - demonstrates the cleanup story:
 
 ```
 Step 0: Import messy.db → Score: 34%
@@ -216,6 +201,8 @@ Step 2: Fix missing fields → Score: 71%
 Step 3: Normalize vendors → Score: 85%
 Step 4: SKU standardization → Score: 94%
 ```
+
+**Each step shows:** Problem type, count found, how it was fixed.
 
 **Transparency:** Users see exactly what "clean" means and how we get there.
 

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmetics Manufacturing Vertical</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg: #1a1a2e;
+      --surface: #16213e;
+      --text: #eee;
+      --muted: #888;
+      --accent: #e94560;
+      --accent2: #0f3460;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    h1, h2, h3 { color: var(--accent); margin-top: 2rem; }
+    h1 { border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid var(--accent2);
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th { background: var(--accent2); }
+    tr:nth-child(even) { background: var(--surface); }
+    .mermaid {
+      background: var(--surface);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    code {
+      background: var(--surface);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    .callout {
+      background: var(--accent2);
+      border-left: 4px solid var(--accent);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .tag {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8em;
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cosmetics Manufacturing Vertical</h1>
+  <p><span class="tag">Strategy</span><span class="tag">Earth Harbor</span></p>
+
+  <h2>The Insight</h2>
+  <p>Cosmetics manufacturers have complex BOMs, regulatory pressure (FDA), and margin sensitivity. Their Inflow data is messy in predictable ways. We can detect and fix those patterns.</p>
+
+  <h2>Product Hierarchy</h2>
+  <div class="mermaid">
+graph TD
+    subgraph RAW["RAW MATERIALS (purchased, never sold)"]
+        BASE[Base Ingredients<br/>oils, waxes, water, emulsifiers]
+        ACTIVE[Active Ingredients<br/>retinol, hyaluronic acid, vitamin C]
+        PIGMENT[Pigments & Colorants<br/>iron oxides, micas, lakes]
+        PRESERV[Preservatives & Stabilizers]
+        FRAG[Fragrances & Essential Oils]
+        subgraph PACK[Packaging Components]
+            PRIMARY[Primary<br/>bottles, jars, tubes, pumps]
+            SECONDARY[Secondary<br/>boxes, inserts]
+            TERTIARY[Tertiary<br/>labels, shrink wrap]
+        end
+    end
+
+    subgraph FINISHED["FINISHED GOODS (manufactured, sold)"]
+        SKIN[Skincare<br/>serums, moisturizers, cleansers]
+        MAKEUP[Makeup<br/>foundations, lipsticks, eyeshadows]
+        HAIR[Haircare<br/>shampoos, conditioners, treatments]
+        BODY[Body<br/>lotions, scrubs, oils]
+    end
+
+    RAW --> FINISHED
+  </div>
+
+  <h2>BOM Example: "Rose Glow Serum"</h2>
+  <table>
+    <tr><th>Component</th><th>Category</th><th>Qty</th><th>UOM</th></tr>
+    <tr><td>Hyaluronic Acid 1%</td><td>Active</td><td>50</td><td>ml</td></tr>
+    <tr><td>Rose Hip Oil</td><td>Base</td><td>30</td><td>ml</td></tr>
+    <tr><td>Vitamin E</td><td>Active</td><td>10</td><td>ml</td></tr>
+    <tr><td>Phenoxyethanol</td><td>Preservative</td><td>5</td><td>ml</td></tr>
+    <tr><td>Rose Fragrance</td><td>Fragrance</td><td>5</td><td>ml</td></tr>
+    <tr><td>30ml Dropper Bottle</td><td>Packaging</td><td>1</td><td>EA</td></tr>
+    <tr><td>Rose Glow Label</td><td>Packaging</td><td>1</td><td>EA</td></tr>
+    <tr><td>Outer Box - Serum</td><td>Packaging</td><td>1</td><td>EA</td></tr>
+  </table>
+
+  <h2>Problems We Solve</h2>
+  <table>
+    <tr><th>#</th><th>Problem</th><th>Demo Story</th><th>Buyer</th></tr>
+    <tr>
+      <td><strong>A</strong></td>
+      <td>Expired inventory</td>
+      <td>"You have $47K of expired ingredients sitting in stock"</td>
+      <td>CFO</td>
+    </tr>
+    <tr>
+      <td><strong>B</strong></td>
+      <td>BOM cost drift</td>
+      <td>"Your serum costs 23% more to make than last quarter"</td>
+      <td>CFO</td>
+    </tr>
+    <tr>
+      <td><strong>C</strong></td>
+      <td>Duplicate SKUs</td>
+      <td>"You have 3 entries for 'Hyaluronic Acid' with different names"</td>
+      <td>Ops</td>
+    </tr>
+    <tr>
+      <td><strong>D</strong></td>
+      <td>Lot traceability gaps</td>
+      <td>"If FDA recalls this pigment, which finished goods are affected?"</td>
+      <td>Quality</td>
+    </tr>
+    <tr>
+      <td><strong>E</strong></td>
+      <td>Phantom inventory</td>
+      <td>"System says 500 units, warehouse has 312"</td>
+      <td>Ops</td>
+    </tr>
+    <tr>
+      <td><strong>F</strong></td>
+      <td>Vendor concentration risk</td>
+      <td>"80% of your ingredients come from 2 suppliers"</td>
+      <td>CFO</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>Lead with B (BOM cost drift)</strong> — ongoing, quantifiable, CFO cares. Ties to margin, leads to recurring engagement.
+  </div>
+
+  <h2>Buyer Personas</h2>
+  <div class="mermaid">
+graph LR
+    subgraph BUYERS[Who Writes the Check]
+        OPS[Ops Manager<br/>"Stop the fires, fix the mess"]
+        CFO[CFO / Owner<br/>"Where's my money going?"]
+        QUAL[Quality/Compliance<br/>"Can we pass an audit?"]
+    end
+
+    OPS --> |feels pain daily| CFO
+    CFO --> |has budget| CLOSE[Close Deal]
+    QUAL --> |episodic audits| CFO
+  </div>
+
+  <h2>Repo Responsibilities</h2>
+  <div class="mermaid">
+graph TB
+    subgraph TUNNEL[inflow-tunnel]
+        BIO[Bio + Credibility]
+        GUIDE[Credential Guide]
+    end
+
+    subgraph DEMO[inflow-demo]
+        EDUCATION[Education]
+        PITCH[Sales Pitch]
+        PREBAKED[Pre-baked Story<br/>BOM drift, expired inv]
+    end
+
+    subgraph APP[inflow-app]
+        DEMO_MODE[Demo Mode<br/>mock data]
+        LIVE_MODE[Live Mode<br/>their token + companyID]
+    end
+
+    subgraph CLEAN[inflow-clean]
+        PATTERNS[patterns/*.ts]
+        CREATE[create - inject mess]
+        DETECT[detect - find issues]
+        FIX[fix - resolve issues]
+    end
+
+    TUNNEL --> DEMO
+    DEMO --> APP
+    CLEAN --> |powers| DEMO
+    CLEAN --> |powers| APP
+    APP --> SERVICES[Services: Cleanup, Consulting, Training]
+  </div>
+
+  <h2>Earth Harbor: Real Mess, Real Patterns</h2>
+  <p>Earth Harbor is a live cosmetics client with actual data problems. As we clean their DB, we reverse-engineer the patterns:</p>
+
+  <div class="mermaid">
+graph LR
+    EH[Earth Harbor DB] --> |discover| MESS[Real Mess]
+    MESS --> |extract| PATTERN[Pattern Definition]
+    PATTERN --> |implement| DETECT[detect function]
+    PATTERN --> |implement| FIX[fix function]
+    PATTERN --> |reverse| CREATE[create function]
+
+    CREATE --> |generates| MOCK[inflow-mock]
+    DETECT --> |powers| DEMO[inflow-demo]
+    FIX --> |powers| APP[inflow-app]
+  </div>
+
+  <div class="callout">
+    <strong>The symmetry:</strong> If you can create() a type of mess, you can detect() and fix() it. Earth Harbor teaches us the patterns; we productize them.
+  </div>
+
+  <h2>Next Steps</h2>
+  <ul>
+    <li>Finish generating Earth Harbor mock data</li>
+    <li>Extract first pattern (start with duplicate SKUs - easiest to detect)</li>
+    <li>Build BOM cost drift detection (highest value demo)</li>
+    <li>Wire patterns into inflow-demo narrative</li>
+  </ul>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#e94560',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#0f3460',
+        lineColor: '#888',
+        secondaryColor: '#0f3460',
+        tertiaryColor: '#16213e'
+      }
+    });
+  </script>
+</body>
+</html>

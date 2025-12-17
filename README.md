@@ -36,7 +36,10 @@ Your Inflow Account
 | [inflow-api-types](https://github.com/ldraney/inflow-api-types) | ✅ Published | Zod schemas for API validation |
 | [inflow-get](https://github.com/ldraney/inflow-get) | ✅ Published | Sync Inflow → SQLite |
 | [inflow-materialize](https://github.com/ldraney/inflow-materialize) | ✅ Published | Materialized views library |
-| inflow-dashboard | 🚧 Planned | NextJS analytics frontend |
+| [inflow-mock](https://github.com/ldraney/inflow-mock) | ✅ Published | Generates clean baseline mock data |
+| inflow-clean | 🚧 In Progress | Data quality patterns: create, detect, fix |
+| inflow-demo | 🚧 Planned | Shows inflow-clean in action (sales funnel) |
+| [inflow-app](https://github.com/ldraney/inflow-app) | 🚧 In Progress | Next.js frontend for Inflow data |
 | inflow-put | 🚧 Planned | Write adapter (view → API mutations) |
 
 ### GTM Stack (Private)

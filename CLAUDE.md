@@ -19,8 +19,9 @@ Meta repository for the inflow-tools ecosystem. This repo contains documentation
 | `inflow-api-types` | Zod schemas for API validation |
 | `inflow-get` | Sync Inflow → SQLite |
 | `inflow-materialize` | Materialized views on synced data |
-| `inflow-mock` | Pattern library: create mess, detect it, fix it |
-| `inflow-demo` | Consumes mock to show cleanup flow |
+| `inflow-mock` | Generates clean baseline mock data |
+| `inflow-clean` | Data quality patterns: create, detect, fix |
+| `inflow-demo` | Shows inflow-clean in action (sales funnel) |
 | `inflow-app` | Next.js frontend for Inflow data |
 | `inflow-put` | Write adapter (planned) |
 
@@ -43,23 +44,23 @@ Open source core stack proves expertise. Tunnel shows bio, LinkedIn, public repo
 ### The Funnel
 Demographics (find) → Marketing (reach) → Tunnel (trust) → Dashboard (prove) → Services (close)
 
-### inflow-mock: The Engine
-
-inflow-mock powers both credibility and demos through pattern symmetry:
+### inflow-mock + inflow-clean: The Engine
 
 ```mermaid
 graph TD
     subgraph "inflow-mock"
+        MOCK[Generates clean baseline data]
+    end
+
+    subgraph "inflow-clean"
         P[patterns/*.ts]
-        DB[combined.db]
+        CREATE[create - inject mess]
+        DETECT[detect - find issues]
+        FIX[fix - resolve issues]
     end
 
-    subgraph "Credibility (Tunnel)"
-        T[Open source proof]
-    end
-
-    subgraph "Demo (Dashboard)"
-        D[Before/after story]
+    subgraph "Demo Flow"
+        DEMO[inflow-demo]
     end
 
     subgraph "Real Products"
@@ -67,19 +68,21 @@ graph TD
         PUT[inflow-put]
     end
 
-    P --> T
-    DB --> D
+    MOCK --> |clean.db| P
+    CREATE --> DETECT
+    DETECT --> FIX
+    P --> DEMO
     P --> APP
     P --> PUT
 ```
 
-**The symmetry insight:** If you can `create()` a type of mess, you can `detect()` and `fix()` it. Same code works on generated DB AND real client data.
+**The symmetry insight:** If you can `create()` a type of mess, you can `detect()` and `fix()` it. Same patterns work on generated DB AND real client data.
 
-| Output | Consumer | Purpose |
-|--------|----------|---------|
-| `combined.db` | inflow-demo | Show the cleanup story |
-| `patterns/*.ts` | inflow-app | Detect issues in real data |
-| `patterns/*.ts` | inflow-put | Generate fix operations |
+| Repo | Output | Purpose |
+|------|--------|---------|
+| `inflow-mock` | clean.db | Baseline test data |
+| `inflow-clean` | patterns/*.ts | Create/detect/fix data issues |
+| `inflow-demo` | UI | Show the cleanup story (sales funnel) |
 
 Prospects see their mess detected by inspectable open source code. Trust → conversion.
 
